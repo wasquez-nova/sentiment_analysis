@@ -42,7 +42,7 @@ Türkçe e-ticaret yorumlarını yapay zeka ile analiz eden, yorumları olumlu/o
 
 1. Repoyu klonla:
 \`\`\`bash
-git clone https://github.com/kullanici_adi/sentiment_analysis.git
+git clone https://github.com/wasquez-nova/sentiment_analysis.git
 cd sentiment_analysis
 \`\`\`
 
