@@ -1,8 +1,7 @@
-# =============================================
 # ANALİZ MODÜLÜ
 # BERTurk modelini yükler ve tek bir yorumu
 # duygu + konu açısından analiz eder.
-# =============================================
+
 
 import torch
 import sys
@@ -11,7 +10,6 @@ sys.path.append("/Users/umit/Desktop/sentiment_analysis")
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from app.konu_tespiti import konu_tespit_et
 
-# Model dosyalarının bulunduğu klasör
 MODEL_PATH = "model/"
 
 # Tokenizer ve modeli yükle
@@ -19,7 +17,6 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_PATH)
 model.eval()  # Modeli tahmin moduna al
 
-# GPU varsa GPU, yoksa CPU kullan
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
@@ -48,7 +45,6 @@ def yorumu_analiz_et(yorum: str) -> dict:
         outputs = model(**inputs)
         pred = torch.argmax(outputs.logits, dim=1).item()
 
-    # 1 → Olumlu, 0 → Olumsuz
     duygu = "Olumlu" if pred == 1 else "Olumsuz"
     
     # Konu tespiti yap

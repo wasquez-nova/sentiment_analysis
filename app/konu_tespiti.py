@@ -1,8 +1,7 @@
-# =============================================
 # KONU TESPİTİ MODÜLÜ
 # Keyword-based yaklaşımla yorumdaki konuları
 # tespit eder: Kargo, Kalite, Fiyat, Satıcı
-# =============================================
+
 
 # Her kategori için anahtar kelime listesi
 KONU_KEYWORDS = {

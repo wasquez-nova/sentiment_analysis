@@ -20,6 +20,40 @@ st.set_page_config(
     layout="wide"
 )
 
+# Tema toggle butonu - sağ üst
+if "tema" not in st.session_state:
+    st.session_state.tema = "koyu"
+
+col_bos, col_tema = st.columns([11, 1])
+with col_tema:
+    if st.button("☀️" if st.session_state.tema == "koyu" else "🌙"):
+        st.session_state.tema = "acik" if st.session_state.tema == "koyu" else "koyu"
+        st.rerun()
+
+if st.session_state.tema == "acik":
+    st.markdown("""
+    <style>
+        .stApp { background-color: #f0f2f6; color: #2c2f3a; }
+        div[data-testid="stMetric"] { background-color: #ffffff; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        div[data-testid="stFileUploader"] { background-color: #ffffff; border-radius: 12px; }
+        .stDataFrame { background-color: #ffffff; border-radius: 12px; }
+        .stButton button { border-radius: 8px; }
+        h1, h2, h3 { color: #2c2f3a; }
+        p, label { color: #3d4155; }
+    </style>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown("""
+    <style>
+        .stApp { background-color: #1a1d27; color: #dde1f0; }
+        div[data-testid="stMetric"] { background-color: #23273a; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        div[data-testid="stFileUploader"] { background-color: #23273a; border-radius: 12px; }
+        .stButton button { border-radius: 8px; }
+        h1, h2, h3 { color: #dde1f0; }
+        p, label { color: #b0b8d1; }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Başlık
 st.title("💬 Türkçe Ürün Yorumu Duygu Analizi")
 st.markdown("Excel veya CSV dosyanızı yükleyin, yorumlarınızı otomatik analiz edelim.")
